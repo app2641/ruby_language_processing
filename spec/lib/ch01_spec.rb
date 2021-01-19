@@ -51,4 +51,19 @@ RSpec.describe Ch01, type: :model do
 
     it { expect(klass.element_symbol).to eq expected }
   end
+
+  describe '#n_gram_for_terms' do
+    context 'term' do
+      let(:expected) { [['I', 'am'], ['am', 'an'], ['an', 'NLPer']] }
+
+      it { expect(klass.n_gram_for_terms).to eq expected }
+    end
+
+  end
+
+  describe '#n_gram_for_words' do
+    let(:expected) { ['I ', ' a', 'am', 'm ', ' a', 'an', 'n ', ' N', 'NL', 'LP', 'Pe', 'er'] }
+
+    it { expect(klass.n_gram_for_words).to eq expected }
+  end
 end

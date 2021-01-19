@@ -34,4 +34,18 @@ class Ch01
       [el, i]
     end.to_h.transform_keys(&:to_sym)
   end
+
+  def n_gram_for_terms
+    str = 'I am an NLPer'
+
+    str.split(' ').each_cons(2).map { |char| char }
+  end
+
+  def n_gram_for_words
+    str = 'I am an NLPer'
+
+    str.each_char.each_cons(2).map do |char|
+      char.join
+    end
+  end
 end
