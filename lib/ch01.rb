@@ -1,32 +1,27 @@
 # frozen_string_literal: true
 
+require 'ch01/ngram'
+
 class Ch01
-  def reverse
-    str = 'stressed'
+  def reverse(str)
     str.reverse
   end
 
-  def patocar
-    str = 'パタトクカシーー'
+  def patocar(str)
     str.chars.select.with_index { |s, i| i.even? }.join
   end
 
-  def patatokucassy
-    str = 'パトカー'
-    str2 = 'タクシー'
-
+  def patatokucassy(str, str2)
     str.chars.zip(str2.chars).join
   end
 
-  def pai
-    str = 'Now I need a drink, alcoholic of course, after the heavy lectures involving quantum mechanics.'
+  def pai(str)
     list = str.gsub(/,|\./, '').split(' ')
     list.map(&:size)
   end
 
-  def element_symbol
+  def element_symbol(str)
     single = [1, 5, 6, 7, 8, 9, 15, 16, 19]
-    str = 'Hi He Lied Because Boron Could Not Oxidize Fluorine. New Nations Might Also Sign Peace Security Clause. Arthur King Can.'
     list = str.gsub(/\./, '').split(' ')
 
     list.map.with_index(1) do |l, i|
@@ -35,17 +30,23 @@ class Ch01
     end.to_h.transform_keys(&:to_sym)
   end
 
-  def n_gram_for_terms
-    str = 'I am an NLPer'
-
-    str.split(' ').each_cons(2).map { |char| char }
+  def n_gram_for_terms(str)
+    str.split(' ').each_cons(2).map(&:itself)
   end
 
-  def n_gram_for_words
-    str = 'I am an NLPer'
+  def n_gram_for_words(str)
+    Ngram.new(str).to_ngram
+  end
 
-    str.each_char.each_cons(2).map do |char|
-      char.join
-    end
+  def union_set(str, str2)
+    (Ngram.new(str).to_ngram | Ngram.new(str2).to_ngram).sort
+  end
+
+  def intersection_set(str, str2)
+    (Ngram.new(str).to_ngram & Ngram.new(str2).to_ngram).sort
+  end
+
+  def difference_set(str, str2)
+    (Ngram.new(str).to_ngram - Ngram.new(str2).to_ngram).sort
   end
 end

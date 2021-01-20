@@ -4,26 +4,34 @@ RSpec.describe Ch01, type: :model do
   let(:klass) { described_class.new }
 
   describe '#reverse' do
-    it { expect(klass.reverse).to eq 'desserts' }
+    let(:str) { 'stressed' }
+
+    it { expect(klass.reverse(str)).to eq 'desserts' }
   end
 
   describe '#patocar' do
-    it { expect(klass.patocar).to eq 'パトカー' }
+    let(:str) { 'パタトクカシーー' }
+
+    it { expect(klass.patocar(str)).to eq 'パトカー' }
   end
 
   describe '#patatokucassy' do
-    it { expect(klass.patatokucassy).to eq 'パタトクカシーー' }
+    let(:str) { 'パトカー' }
+    let(:str2) { 'タクシー' }
+    it { expect(klass.patatokucassy(str, str2)).to eq 'パタトクカシーー' }
   end
 
   describe '#pai' do
+    let(:str) { 'Now I need a drink, alcoholic of course, after the heavy lectures involving quantum mechanics.' }
     let(:expected) do
       [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9]
     end
 
-    it { expect(klass.pai).to eq expected }
+    it { expect(klass.pai(str)).to eq expected }
   end
 
   describe '#element_symbol' do
+    let(:str) { 'Hi He Lied Because Boron Could Not Oxidize Fluorine. New Nations Might Also Sign Peace Security Clause. Arthur King Can.' }
     let(:expected) do
       {
         'H': 1,
@@ -53,17 +61,40 @@ RSpec.describe Ch01, type: :model do
   end
 
   describe '#n_gram_for_terms' do
-    context 'term' do
-      let(:expected) { [['I', 'am'], ['am', 'an'], ['an', 'NLPer']] }
+    let(:str) { 'I am an NLPer' }
+    let(:expected) { [['I', 'am'], ['am', 'an'], ['an', 'NLPer']] }
 
-      it { expect(klass.n_gram_for_terms).to eq expected }
-    end
-
+    it { expect(klass.n_gram_for_terms(str)).to eq expected }
   end
 
   describe '#n_gram_for_words' do
+    let(:str) { 'I am an NLPer' }
     let(:expected) { ['I ', ' a', 'am', 'm ', ' a', 'an', 'n ', ' N', 'NL', 'LP', 'Pe', 'er'] }
 
-    it { expect(klass.n_gram_for_words).to eq expected }
+    it { expect(klass.n_gram_for_words(str)).to eq expected }
+  end
+
+  describe '#union_set' do
+    let(:str) { 'paraparaparadise' }
+    let(:str2) { 'paragraph' }
+    let(:expected) { ['ad', 'ag', 'ap', 'ar', 'di', 'gr', 'is', 'pa', 'ph', 'ra', 'se'] }
+
+    it { expect(klass.union_set(str, str2)).to eq expected }
+  end
+
+  describe '#intersection_set' do
+    let(:str) { 'paraparaparadise' }
+    let(:str2) { 'paragraph' }
+    let(:expected) { ['ap', 'ar', 'pa', 'ra'] }
+
+    it { expect(klass.intersection_set(str, str2)).to eq expected }
+  end
+
+  describe '#difference_set' do
+    let(:str) { 'paraparaparadise' }
+    let(:str2) { 'paragraph' }
+    let(:expected) { ['ad', 'di', 'is', 'se'] }
+
+    it { expect(klass.difference_set(str, str2)).to eq expected }
   end
 end
