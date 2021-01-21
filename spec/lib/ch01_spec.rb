@@ -57,7 +57,7 @@ RSpec.describe Ch01, type: :model do
       }
     end
 
-    it { expect(klass.element_symbol).to eq expected }
+    it { expect(klass.element_symbol(str)).to eq expected }
   end
 
   describe '#n_gram_for_terms' do
