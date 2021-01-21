@@ -49,4 +49,8 @@ class Ch01
   def difference_set(str, str2)
     (Ngram.new(str).to_ngram - Ngram.new(str2).to_ngram).sort
   end
+
+  def template(str, str2, str3)
+    sprintf("%s時の%sは%s", str, str2, str3)
+  end
 end

@@ -97,4 +97,12 @@ RSpec.describe Ch01, type: :model do
 
     it { expect(klass.difference_set(str, str2)).to eq expected }
   end
+
+  describe '#template' do
+    let(:str) { '12' }
+    let(:str2) { '気温' }
+    let(:str3) { '22.4' }
+
+    it { expect(klass.template(str, str2, str3)).to eq '12時の気温は22.4' }
+  end
 end
