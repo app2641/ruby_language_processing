@@ -53,4 +53,10 @@ class Ch01
   def template(str, str2, str3)
     sprintf("%s時の%sは%s", str, str2, str3)
   end
+
+  def cipher(str)
+    str.chars.map do |char|
+      char.match?(/[a-z]/) ? (219 - char.ord).chr : char
+    end.join
+  end
 end

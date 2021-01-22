@@ -105,4 +105,12 @@ RSpec.describe Ch01, type: :model do
 
     it { expect(klass.template(str, str2, str3)).to eq '12時の気温は22.4' }
   end
+
+  describe '#cipher' do
+    let(:str) { 'the quick brown fox jumps over the lazy dog' }
+    let(:expected) { 'gsv jfrxp yildm ulc qfnkh levi gsv ozab wlt' }
+
+    it { expect(klass.cipher(str)).to eq expected }
+    it { expect(klass.cipher(expected)).to eq str }
+  end
 end
