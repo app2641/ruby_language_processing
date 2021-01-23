@@ -113,4 +113,18 @@ RSpec.describe Ch01, type: :model do
     it { expect(klass.cipher(str)).to eq expected }
     it { expect(klass.cipher(expected)).to eq str }
   end
+
+  describe '#typoglycemia' do
+    context 'when char size less than or equal 4' do
+      let(:str) { 'food' }
+
+      it { expect(klass.typoglycemia(str)).to eq str }
+    end
+
+    context 'when char size greater than 4' do
+      let(:str) { "I couldn’t believe that I could actually understand what I was reading : the phenomenal power of the human mind ." }
+
+      it { expect(klass.typoglycemia(str)).not_to eq str }
+    end
+  end
 end

@@ -59,4 +59,15 @@ class Ch01
       char.match?(/[a-z]/) ? (219 - char.ord).chr : char
     end.join
   end
+
+  def typoglycemia(str)
+    str.split(' ').map do |word|
+      if 4 < word.chars.size
+        first, last = [word.slice!(0), word.slice!(-1)]
+        [first, *word.chars.shuffle, last].join
+      else
+        word
+      end
+    end.join(' ')
+  end
 end
