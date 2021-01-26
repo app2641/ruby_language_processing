@@ -11,4 +11,12 @@ RSpec.describe Ch02, type: :model do
   describe '#sed' do
     it { expect(klass.sed(txt_path)).not_to match /\t/ }
   end
+
+  describe '#line_one' do
+    it { expect(klass.line_one(txt_path)).to match /^Mary\tF\t7065\t1880$/ }
+  end
+
+  describe '#line_two' do
+    it { expect(klass.line_two(txt_path)).to match /^Anna\tF\t2604\t1880$/ }
+  end
 end
