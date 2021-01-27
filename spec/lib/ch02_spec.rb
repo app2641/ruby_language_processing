@@ -19,4 +19,11 @@ RSpec.describe Ch02, type: :model do
   describe '#line_two' do
     it { expect(klass.line_two(txt_path)).to match /^Anna\tF\t2604\t1880$/ }
   end
+
+  describe '#paste' do
+    let(:one) { klass.line_one(txt_path) }
+    let(:two) { klass.line_two(txt_path) }
+
+    it { expect(klass.paste(one, two)).to match /^Mary\tF\t7065\t1880\tAnna\tF\t2604\t1880$/ }
+  end
 end
