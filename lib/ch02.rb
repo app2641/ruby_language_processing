@@ -30,4 +30,8 @@ class Ch02
 
     `paste #{one_file.path} #{two_file.path}`
   end
+
+  def head(file_path, line)
+    `head -n #{line} #{file_path}`
+  end
 end
