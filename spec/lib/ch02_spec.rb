@@ -32,4 +32,10 @@ RSpec.describe Ch02, type: :model do
 
     it { expect(klass.head(txt_path, line)).to match /^Mary\tF\t7065\t1880\nAnna\tF\t2604\t1880$/ }
   end
+
+  describe '#tail' do
+    let(:line) { 2 }
+
+    it { expect(klass.tail(txt_path, line)).to match /Mason\tM\t12435\t2018\nLogan\tM\t12352\t2018/ }
+  end
 end

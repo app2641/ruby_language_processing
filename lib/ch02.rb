@@ -34,4 +34,8 @@ class Ch02
   def head(file_path, line)
     `head -n #{line} #{file_path}`
   end
+
+  def tail(file_path, line)
+    `tail -n #{line} #{file_path}`
+  end
 end
