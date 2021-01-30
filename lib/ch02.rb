@@ -38,4 +38,8 @@ class Ch02
   def tail(file_path, line)
     `tail -n #{line} #{file_path}`
   end
+
+  def beginning_of_line(file_path)
+    `cut -b 1 #{file_path} | sort | uniq`
+  end
 end

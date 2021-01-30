@@ -38,4 +38,10 @@ RSpec.describe Ch02, type: :model do
 
     it { expect(klass.tail(txt_path, line)).to match /Mason\tM\t12435\t2018\nLogan\tM\t12352\t2018/ }
   end
+
+  describe '#beginning_of_line' do
+    let(:expected) { /A\nB\nC\nD\nE\nF\nG\nH\nI\nJ\nK\nL\nM\nN\nO\nP\nR\nS\nT\nV\nW\n/ }
+
+    it { expect(klass.beginning_of_line(txt_path)).to match expected }
+  end
 end
