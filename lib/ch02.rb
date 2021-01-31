@@ -42,4 +42,8 @@ class Ch02
   def beginning_of_line(file_path)
     `cut -b 1 #{file_path} | sort | uniq`
   end
+
+  def sort_therd(file_path)
+    `sort -rnk 3 #{file_path} | head -n 3`
+  end
 end

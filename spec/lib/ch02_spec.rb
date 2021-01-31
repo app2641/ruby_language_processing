@@ -44,4 +44,10 @@ RSpec.describe Ch02, type: :model do
 
     it { expect(klass.beginning_of_line(txt_path)).to match expected }
   end
+
+  describe '#sort_therd' do
+    let(:expected) { /Linda\tF\t99689\t1947\nLinda\tF\t96211\t1948\nJames\tM\t94757\t1947\n/ }
+
+    it { expect(klass.sort_therd(txt_path)).to match expected }
+  end
 end
