@@ -50,4 +50,16 @@ RSpec.describe Ch02, type: :model do
 
     it { expect(klass.sort_therd(txt_path)).to match expected }
   end
+
+  describe '#count' do
+    let(:expected) do
+      <<~TXT
+\s118 James
+\s111 William
+\s108 Robert
+      TXT
+    end
+
+    it { expect(klass.count(txt_path)).to eq expected }
+  end
 end

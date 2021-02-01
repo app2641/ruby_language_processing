@@ -46,4 +46,8 @@ class Ch02
   def sort_therd(file_path)
     `sort -rnk 3 #{file_path} | head -n 3`
   end
+
+  def count(file_path)
+    `cut -f 1 #{file_path} | sort | uniq -c | sort -rn | head -n 3`
+  end
 end
