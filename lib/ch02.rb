@@ -4,7 +4,7 @@ require 'tempfile'
 
 class Ch02
   def line_count(file_path)
-    `wc -l #{file_path}`
+    File.read(file_path).count("\n")
   end
 
   def sed(file_path)

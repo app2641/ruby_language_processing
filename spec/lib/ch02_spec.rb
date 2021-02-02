@@ -5,7 +5,9 @@ RSpec.describe Ch02, type: :model do
   let(:txt_path) { File.expand_path('./data/popular-names.txt') }
 
   describe '#line_count' do
-    it { expect(klass.line_count(txt_path)).to match /2780/ }
+    let(:expected) { `cat #{txt_path} | wc -l | sed -e 's/\s//g'` }
+
+    it { expect("#{klass.line_count(txt_path)}\n").to eq expected }
   end
 
   describe '#sed' do
