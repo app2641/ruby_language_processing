@@ -10,8 +10,8 @@ RSpec.describe Ch02, type: :model do
     it { expect("#{klass.line_count(txt_path)}\n").to eq expected }
   end
 
-  describe '#sed' do
-    it { expect(klass.sed(txt_path)).not_to match /\t/ }
+  describe '#replace_tab_to_space' do
+    it { expect(klass.replace_tab_to_space(txt_path)).not_to match /\t/ }
   end
 
   describe '#line_one' do

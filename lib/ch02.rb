@@ -7,8 +7,8 @@ class Ch02
     File.read(file_path).count("\n")
   end
 
-  def sed(file_path)
-    `sed -e 's/\t/\s/g' #{file_path}`
+  def replace_tab_to_space(file_path)
+    File.read(file_path).gsub(/\t/, "\s")
   end
 
   def line_one(file_path)
