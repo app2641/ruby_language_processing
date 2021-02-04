@@ -12,7 +12,12 @@ class Ch02
   end
 
   def line_one(file_path)
-    `cat #{file_path} | head -n 1`
+    text = ''
+
+    File.open(file_path) do |file|
+      text = file.gets
+    end
+    text
   end
 
   def line_two(file_path)
