@@ -21,7 +21,14 @@ class Ch02
   end
 
   def line_two(file_path)
-    `cat #{file_path} | head -n 2 | tail -n 1`
+    text = ''
+
+    File.open(file_path) do |file|
+      file.each do |f|
+        text = f if file.lineno == 2
+      end
+    end
+    text
   end
 
   def paste(one, two)

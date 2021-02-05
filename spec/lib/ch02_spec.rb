@@ -21,6 +21,8 @@ RSpec.describe Ch02, type: :model do
   end
 
   describe '#line_two' do
+    let(:expected) { `cat #{txt_path} | head -n 2 | tail -n 1` }
+
     it { expect(klass.line_two(txt_path)).to match /^Anna\tF\t2604\t1880$/ }
   end
 
