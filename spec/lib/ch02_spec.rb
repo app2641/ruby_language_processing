@@ -35,8 +35,9 @@ RSpec.describe Ch02, type: :model do
 
   describe '#head' do
     let(:line) { 2 }
+    let(:expected) { `head -n #{line} #{txt_path}` }
 
-    it { expect(klass.head(txt_path, line)).to match /^Mary\tF\t7065\t1880\nAnna\tF\t2604\t1880$/ }
+    it { expect(klass.head(txt_path, line)).to eq expected }
   end
 
   describe '#tail' do

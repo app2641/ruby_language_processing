@@ -44,7 +44,14 @@ class Ch02
   end
 
   def head(file_path, line)
-    `head -n #{line} #{file_path}`
+    text = []
+
+    File.open(file_path) do |file|
+      file.each do |f|
+        text << f if file.lineno <= line
+      end
+    end
+    text.join
   end
 
   def tail(file_path, line)
