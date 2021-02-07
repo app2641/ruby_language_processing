@@ -55,7 +55,15 @@ class Ch02
   end
 
   def tail(file_path, line)
-    `tail -n #{line} #{file_path}`
+    text = []
+    max_line = File.read(file_path).count("\n")
+
+    File.open(file_path) do |file|
+      file.each do |f|
+        text << f if file.lineno > (max_line - line)
+      end
+    end
+    text.join
   end
 
   def beginning_of_line(file_path)

@@ -42,8 +42,9 @@ RSpec.describe Ch02, type: :model do
 
   describe '#tail' do
     let(:line) { 2 }
+    let(:expected) { `tail -n #{line} #{txt_path}` }
 
-    it { expect(klass.tail(txt_path, line)).to match /Mason\tM\t12435\t2018\nLogan\tM\t12352\t2018/ }
+    it { expect(klass.tail(txt_path, line)).to eq expected }
   end
 
   describe '#beginning_of_line' do
