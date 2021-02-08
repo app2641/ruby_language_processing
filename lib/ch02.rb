@@ -67,7 +67,15 @@ class Ch02
   end
 
   def beginning_of_line(file_path)
-    `cut -b 1 #{file_path} | sort | uniq`
+    text = []
+
+    File.open(file_path) do |file|
+      file.each do |f|
+        text << f.chars.first
+      end
+    end
+    
+    text.uniq.sort.join("\n") << "\n"
   end
 
   def sort_therd(file_path)

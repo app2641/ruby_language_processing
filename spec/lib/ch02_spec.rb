@@ -48,9 +48,9 @@ RSpec.describe Ch02, type: :model do
   end
 
   describe '#beginning_of_line' do
-    let(:expected) { /A\nB\nC\nD\nE\nF\nG\nH\nI\nJ\nK\nL\nM\nN\nO\nP\nR\nS\nT\nV\nW\n/ }
+    let(:expected) { `cut -b 1 #{txt_path} | sort | uniq` }
 
-    it { expect(klass.beginning_of_line(txt_path)).to match expected }
+    it { expect(klass.beginning_of_line(txt_path)).to eq expected }
   end
 
   describe '#sort_therd' do
