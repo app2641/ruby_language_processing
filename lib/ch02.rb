@@ -78,8 +78,21 @@ class Ch02
     text.uniq.sort.join("\n") << "\n"
   end
 
-  def sort_therd(file_path)
-    `sort -rnk 3 #{file_path} | head -n 3`
+  def sort_third(file_path)
+    text = []
+
+    File.open(file_path) do |file|
+      file.each do |value|
+        values = value.split("\t")
+        text << [values[2], value]
+      end
+    end
+
+    text.to_h
+      .sort { |a, b| b[0].to_i <=> a[0].to_i }
+      .first(3)
+      .map { |value| value[1] }
+      .join
   end
 
   def count(file_path)

@@ -53,10 +53,10 @@ RSpec.describe Ch02, type: :model do
     it { expect(klass.beginning_of_line(txt_path)).to eq expected }
   end
 
-  describe '#sort_therd' do
-    let(:expected) { /Linda\tF\t99689\t1947\nLinda\tF\t96211\t1948\nJames\tM\t94757\t1947\n/ }
+  describe '#sort_third' do
+    let(:expected) { `sort -rnk 3 #{txt_path} | head -n 3` }
 
-    it { expect(klass.sort_therd(txt_path)).to match expected }
+    it { expect(klass.sort_third(txt_path)).to eq expected }
   end
 
   describe '#count' do
