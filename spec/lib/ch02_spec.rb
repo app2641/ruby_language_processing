@@ -60,13 +60,7 @@ RSpec.describe Ch02, type: :model do
   end
 
   describe '#count' do
-    let(:expected) do
-      <<~TXT
-\s118 James
-\s111 William
-\s108 Robert
-      TXT
-    end
+    let(:expected) { `cut -f 1 #{txt_path} | sort | uniq -c | sort -rn | head -n 2` }
 
     it { expect(klass.count(txt_path)).to eq expected }
   end

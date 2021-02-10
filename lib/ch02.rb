@@ -96,6 +96,19 @@ class Ch02
   end
 
   def count(file_path)
-    `cut -f 1 #{file_path} | sort | uniq -c | sort -rn | head -n 3`
+    result = {}
+
+    File.open(file_path) do |file|
+      file.each do |value|
+        values = value.split("\t")
+        result[values[0]] = 0 if result[values[0]].nil?
+        result[values[0]] += 1
+      end
+    end
+
+    result.sort { |a, b| b[1] <=> a[1] }
+      .map { |v| " #{v[1]} #{v[0]}" }
+      .first(2)
+      .join("\n") + "\n"
   end
 end
