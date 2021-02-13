@@ -9,4 +9,22 @@ RSpec.describe Ch03, type: :model do
 
     it { expect(klass.england(json_path)).to match expected }
   end
+
+  describe '#categories' do
+    let(:expected) do
+      [
+        '[[Category:イギリス|*]]',
+        '[[Category:イギリス連邦加盟国]]',
+        '[[Category:英連邦王国|*]]',
+        '[[Category:G8加盟国]]',
+        '[[Category:欧州連合加盟国|元]]',
+        '[[Category:海洋国家]]',
+        '[[Category:現存する君主国]]',
+        '[[Category:島国]]',
+        '[[Category:1801年に成立した国家・領域]]'
+      ]
+    end
+
+    it { expect(klass.categories(json_path)).to eq expected }
+  end
 end

@@ -15,4 +15,9 @@ class Ch03
     end
     text
   end
+
+  def categories(json_path)
+    content = england(json_path)
+    content.scan(/\[\[Category:[^\]]*\]\]/)
+  end
 end
