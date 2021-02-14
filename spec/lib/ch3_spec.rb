@@ -27,4 +27,10 @@ RSpec.describe Ch03, type: :model do
 
     it { expect(klass.categories(json_path)).to eq expected }
   end
+
+  describe '#sections' do
+    let(:expected) { %w(国名(1) 歴史(1) 地理(1) 主要都市(2) 気候(2) 政治(1)) }
+
+    it { expect(klass.sections(json_path).first(6)).to eq expected }
+  end
 end

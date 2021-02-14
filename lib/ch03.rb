@@ -20,4 +20,14 @@ class Ch03
     content = england(json_path)
     content.scan(/\[\[Category:[^\]]*\]\]/)
   end
+
+  def sections(json_path)
+    content = england(json_path)
+    matches = content.scan(/^=+[^=]*=+$/)
+    matches.map do |match|
+      section = (match.count('=') / 2) - 1
+      section_name = match.gsub(/=/, '')
+      "#{section_name}(#{section})"
+    end
+  end
 end
