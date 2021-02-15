@@ -30,4 +30,9 @@ class Ch03
       "#{section_name}(#{section})"
     end
   end
+
+  def media(json_path)
+    content = england(json_path)
+    content.scan(/^\[\[ファイル:([^|]*)\|.*\]\]$/).flatten
+  end
 end

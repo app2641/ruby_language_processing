@@ -33,4 +33,16 @@ RSpec.describe Ch03, type: :model do
 
     it { expect(klass.sections(json_path).first(6)).to eq expected }
   end
+
+  describe '#media' do
+    let(:expected) do
+      [
+        "Descriptio Prime Tabulae Europae.jpg",
+        "Lenepveu, Jeanne d'Arc au siège d'Orléans.jpg",
+        "London.bankofengland.arp.jpg"
+      ]
+    end
+
+    it { expect(klass.media(json_path).first(3)).to eq expected }
+  end
 end
