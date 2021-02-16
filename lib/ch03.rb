@@ -35,4 +35,14 @@ class Ch03
     content = england(json_path)
     content.scan(/^\[\[ファイル:([^|]*)\|.*\]\]$/).flatten
   end
+
+  def emphasis(json_path)
+    content = england(json_path)
+    matches = []
+
+    matches << content.scan(/[^']''([^']*)''[^']/)
+    matches << content.scan(/[^']'''([^']*)'''[^']/)
+    matches << content.scan(/[^']'''''([^']*)'''''[^']/)
+    matches.flatten.uniq
+  end
 end

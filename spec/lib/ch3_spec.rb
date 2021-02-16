@@ -45,4 +45,16 @@ RSpec.describe Ch03, type: :model do
 
     it { expect(klass.media(json_path).first(3)).to eq expected }
   end
+
+  describe '#emphasis' do
+    let(:expected) do
+      [
+        "神よ女王を護り賜え",
+        "2019-2-5閲覧",
+        "The American Pageant, Volume 1"
+      ]
+    end
+
+    it { expect(klass.emphasis(json_path).first(3)).to eq expected }
+  end
 end
