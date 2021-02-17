@@ -45,4 +45,16 @@ class Ch03
     matches << content.scan(/[^']'''''([^']*)'''''[^']/)
     matches.flatten.uniq
   end
+
+  def internal_link(json_path)
+    content = england(json_path)
+    matches = []
+
+    matches << content.scan(/[^\[]\[\[([^\]]*)\]\][^\]]/)
+    matches.flatten.uniq.map do |match|
+      next nil if match =~ /(Category|ファイル)/
+
+      match.gsub(/.*\|/, '')
+    end.compact
+  end
 end

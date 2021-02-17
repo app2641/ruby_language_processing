@@ -57,4 +57,10 @@ RSpec.describe Ch03, type: :model do
 
     it { expect(klass.emphasis(json_path).first(3)).to eq expected }
   end
+
+  describe '#internal_link' do
+    let(:expected) { %w(スコットランド・ゲール語 ウェールズ語 アイルランド語) }
+
+    it { expect(klass.internal_link(json_path).first(3)).to eq expected }
+  end
 end
